@@ -54,35 +54,35 @@ const data = {
       ],
     },
 
-    {
-      title: "Monitoring",
-      url: "#",
-      items: [
-        {
-          title: "Audit Logs",
-          url: "/audit-logs",
-        },
-        {
-          title: "Notifications",
-          url: "/notifications",
-        },
-      ],
-    },
+    // {
+    //   title: "Monitoring",
+    //   url: "#",
+    //   items: [
+    //     {
+    //       title: "Audit Logs",
+    //       url: "/audit-logs",
+    //     },
+    //     {
+    //       title: "Notifications",
+    //       url: "/notifications",
+    //     },
+    //   ],
+    // },
 
-    {
-      title: "Platform",
-      url: "#",
-      items: [
-        {
-          title: "Reporting Channels",
-          url: "/reporting-channels",
-        },
-        {
-          title: "Subscriptions",
-          url: "/subscriptions",
-        },
-      ],
-    },
+    // {
+    //   title: "Platform",
+    //   url: "#",
+    //   items: [
+    //     {
+    //       title: "Reporting Channels",
+    //       url: "/reporting-channels",
+    //     },
+    //     {
+    //       title: "Subscriptions",
+    //       url: "/subscriptions",
+    //     },
+    //   ],
+    // },
 
     {
       title: "System",
