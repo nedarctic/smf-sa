@@ -1,68 +1,34 @@
-"use client"
+import type { Metadata } from "next";
+import ClientLayout from "./ClientLayout";
+import { Providers } from "@/lib/providers";
+import "../globals.css";
+import { Quicksand } from "next/font/google";
 
-import { AppSidebar } from "@/components/layout/app-sidebar"
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
-import {
-    SidebarInset,
-    SidebarProvider,
-    SidebarTrigger,
-} from "@/components/ui/sidebar";
-import { TooltipProvider } from "@/components/ui/tooltip"
-import { BreadcrumbContext, type BreadcrumbItem as BreadcrumbItemType } from "@/lib/context/breadcrumb-ctx";
+const quicksand = Quicksand({
+  variable: "--font-quicksand",
+  subsets: ["latin"],
+});
 
-import React from "react";
+export const metadata: Metadata = {
+    title: "SemaFacts Super Admin App",
+    description: "Internal Management Tool for SemaFacts Whistleblowing Services",
+};
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-    const [items, setItems] = React.useState<BreadcrumbItemType[]>([])
-
+export default function DashboardLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     return (
-        <SidebarProvider>
-            <BreadcrumbContext.Provider value={{ items, setItems }}>
-                <AppSidebar />
-                <SidebarInset>
-                    <header className="flex h-16 shrink-0 items-center gap-2 border-b">
-                        <div className="flex items-center gap-2 px-3">
-                            <SidebarTrigger />
-                            <Separator
-                                orientation="vertical"
-                                className="mr-2 data-vertical:h-4 data-vertical:self-auto"
-                            />
-                            <Breadcrumb>
-                                <BreadcrumbList>
-                                    {items.map((item, index) => (
-                                        <React.Fragment key={item.label}>
-                                            <BreadcrumbItem>
-                                                {item.href ? (
-                                                    <BreadcrumbLink href={item.href}>
-                                                        {item.label}
-                                                    </BreadcrumbLink>
-                                                ) : (
-                                                    <BreadcrumbPage>{item.label}</BreadcrumbPage>
-                                                )}
-                                            </BreadcrumbItem>
-
-                                            {index < items.length - 1 && (
-                                                <BreadcrumbSeparator />
-                                            )}
-                                        </React.Fragment>
-                                    ))}
-                                </BreadcrumbList>
-                            </Breadcrumb>
-                        </div>
-                    </header>
-                    <TooltipProvider>
-                        {children}
-                    </TooltipProvider>
-                </SidebarInset>
-            </BreadcrumbContext.Provider>
-        </SidebarProvider>
+        <html
+            lang="en"
+            className={`${quicksand.variable} h-full antialiased`}
+        >
+            <body className="min-h-full flex flex-col">
+                <Providers>
+                    <ClientLayout>{children}</ClientLayout>
+                </Providers>
+            </body>
+        </html>
     );
 }
